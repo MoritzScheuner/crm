@@ -146,8 +146,7 @@ def get_deal_activities(name: str):
 			"creation": get_datetime(
 			    communication.communication_date or communication.creation
 			),
-
-			),
+			
 			"data": {
 				"subject": communication.subject,
 				"content": communication.content,
