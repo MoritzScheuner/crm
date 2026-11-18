@@ -142,9 +142,11 @@ def get_deal_activities(name: str):
 			"communication_type": communication.communication_type,
 			"communication_date": communication.communication_date or communication.creation,
 			# a scheduled email belongs where it was sent, not where it was written
-			"creation": max(
-				communication.creation,
-				get_datetime(communication.communication_date or communication.creation),
+
+			"creation": get_datetime(
+			    communication.communication_date or communication.creation
+			),
+
 			),
 			"data": {
 				"subject": communication.subject,
@@ -297,10 +299,11 @@ def get_lead_activities(name: str):
 			"communication_type": communication.communication_type,
 			"communication_date": communication.communication_date or communication.creation,
 			# a scheduled email belongs where it was sent, not where it was written
-			"creation": max(
-				communication.creation,
-				get_datetime(communication.communication_date or communication.creation),
+			
+			"creation": get_datetime(
+			    communication.communication_date or communication.creation
 			),
+
 			"data": {
 				"subject": communication.subject,
 				"content": communication.content,
